@@ -1,0 +1,51 @@
+[[cronjobs]]
+apiVersion = "batch/v1"
+kind = "CronJob"
+
+[cronjobs.metadata]
+name = "first-cronjob"
+namespace = "default"
+
+[cronjobs.spec]
+schedule = "*/10 * * * *" # Runs every 10 minutes
+concurrencyPolicy = "Forbid"
+successfulJobsHistoryLimit = 3
+failedJobsHistoryLimit = 1
+
+[cronjobs.spec.jobTemplate.spec.template.spec]
+restartPolicy = "OnFailure"
+
+[[cronjobs.spec.jobTemplate.spec.template.spec.containers]]
+name = "first-job"
+image = "busybox:latest"
+command = [
+  "/bin/sh",
+  "-c",
+  "echo \"First job running\"; date"
+]
+
+[[cronjobs]]
+apiVersion = "batch/v1"
+kind = "CronJob"
+
+[cronjobs.metadata]
+name = "second-cronjob"
+namespace = "default"
+
+[cronjobs.spec]
+schedule = "0 0 * * *" # Runs daily at midnight
+concurrencyPolicy = "Forbid"
+successfulJobsHistoryLimit = 3
+failedJobsHistoryLimit = 1
+
+[cronjobs.spec.jobTemplate.spec.template.spec]
+restartPolicy = "OnFailure"
+
+[[cronjobs.spec.jobTemplate.spec.template.spec.containers]]
+name = "second-job"
+image = "busybox:latest"
+command = [
+  "/bin/sh",
+  "-c",
+  "echo \"Second job running\"; date"
+]

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`handle transforms 1`] = `"(()=>{"use strict";console.log({this:"transformed"})})();"`;
+
+exports[`handles toml > expect toml import to be a json object 1`] = `"(()=>{"use strict";console.log({pluginDir:"./plugins",web:{enabled:!0},logging:{type:"stdout",level:"info"}})})();"`;
+
+exports[`handles toml > expect toml import to be a string 1`] = `"(()=>{"use strict";console.log('pluginDir = "./plugins"\\n\\n[web]\\nenabled = true\\n\\n[logging]\\ntype = "stdout"\\nlevel = "info"\\n')})();"`;
