@@ -32,7 +32,7 @@ jobs:
         run: pnpm build
 
       - name: generate nuxt types
-        run: pnpm run --filter @unplugin-yaml/nuxt-example generate:types
+        run: pnpm run --filter @unplugin-toml/nuxt-example generate:types
 
       - name: lint
         run: pnpm lint
