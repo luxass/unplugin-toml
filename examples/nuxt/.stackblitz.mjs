@@ -1,12 +1,14 @@
 import fs from "node:fs";
 
 // fetch the pnpm-workspace.yaml file from github
+// eslint-disable-next-line antfu/no-top-level-await
 const pnpmWorkspace = await fetch(
   "https://raw.githubusercontent.com/luxass/unplugin-toml/main/pnpm-workspace.yaml",
 ).then((res) => res.text());
 
 // parse the catalogs from the workspace file
 const catalogs = {};
+// eslint-disable-next-line regexp/no-super-linear-backtracking
 const catalogMatch = pnpmWorkspace.match(/catalogs:\s*([\s\S]*?)(?=\n\w|$)/);
 if (catalogMatch) {
   const catalogContent = catalogMatch[1];
