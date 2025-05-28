@@ -1,0 +1,31 @@
+{
+  "name": "@unplugin-toml/nextjs-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "catalog:example",
+    "react": "catalog:example",
+    "react-dom": "catalog:example"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:dev",
+    "@types/react": "catalog:dev",
+    "@types/react-dom": "catalog:dev",
+    "postcss": "catalog:example",
+    "shiki": "catalog:example",
+    "tailwindcss": "catalog:example",
+    "typescript": "catalog:dev",
+    "unplugin-toml": "workspace:*"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
+  }
+}

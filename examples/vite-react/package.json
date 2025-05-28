@@ -1,0 +1,35 @@
+{
+  "name": "@unplugin-toml/vite-react-example",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "catalog:example",
+    "react-dom": "catalog:example",
+    "react-router-dom": "catalog:example"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:example",
+    "@types/react": "catalog:dev",
+    "@types/react-dom": "catalog:dev",
+    "@vitejs/plugin-react": "catalog:example",
+    "autoprefixer": "catalog:example",
+    "postcss": "catalog:example",
+    "shiki": "catalog:example",
+    "tailwindcss": "catalog:example",
+    "typescript": "catalog:dev",
+    "unplugin-toml": "workspace:*",
+    "vite": "catalog:dev",
+    "vite-plugin-inspect": "catalog:example"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
+  }
+}

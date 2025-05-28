@@ -1,0 +1,28 @@
+{
+  "name": "@unplugin-toml/nuxt-example",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate:types": "nuxt prepare",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "nuxt": "catalog:example",
+    "shiki": "catalog:example",
+    "vue": "catalog:example"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "catalog:example",
+    "typescript": "catalog:dev",
+    "unplugin-toml": "workspace:*",
+    "vue-tsc": "catalog:example"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
+  }
+}
