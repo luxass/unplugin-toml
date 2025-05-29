@@ -1,11 +1,12 @@
 import { join } from "node:path";
+import { dedent } from "@luxass/utils";
 import { rollup } from "rollup";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 import TOMLPlugin from "../src/rollup";
 import { removeComments } from "./utils";
 
-describe("rolldown", () => {
+describe("rollup", () => {
   it("expect toml import to be a json object", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"));
 
@@ -17,12 +18,21 @@ describe("rolldown", () => {
         TOMLPlugin(),
       ],
     });
-    const { output } = await bundle.generate({
+
+    await bundle.write({
+      dir: join(testdirPath, "dist"),
       format: "esm",
       sourcemap: false,
     });
 
-    expect(removeComments(output[0].code)).toMatchSnapshot();
+    const config = await import(join(testdirPath, "dist/basic.js")).then((m) => m.config);
+    expect(config).toBeDefined();
+
+    expect(config).toEqual({
+      pluginDir: "./plugins",
+      web: { enabled: true },
+      logging: { type: "stdout", level: "info" },
+    });
   });
 
   it("expect toml import to be a string", async () => {
@@ -36,12 +46,26 @@ describe("rolldown", () => {
         TOMLPlugin(),
       ],
     });
-    const { output } = await bundle.generate({
+
+    await bundle.write({
+      dir: join(testdirPath, "dist"),
       format: "esm",
       sourcemap: false,
     });
 
-    expect(removeComments(output[0].code)).toMatchSnapshot();
+    const config = await import(join(testdirPath, "dist/basic-raw.js")).then((m) => m.config);
+    expect(config).toBeDefined();
+
+    expect(config).toMatch(dedent`
+      pluginDir = "./plugins"
+
+      [web]
+      enabled = true
+
+      [logging]
+      type = "stdout"
+      level = "info"
+    `);
   });
 
   it("handle transforms", async () => {
@@ -63,11 +87,18 @@ describe("rolldown", () => {
         }),
       ],
     });
-    const { output } = await bundle.generate({
+
+    await bundle.write({
+      dir: join(testdirPath, "dist"),
       format: "esm",
       sourcemap: false,
     });
 
-    expect(removeComments(output[0].code)).toMatchSnapshot();
+    const config = await import(join(testdirPath, "dist/transform.js")).then((m) => m.config);
+    expect(config).toBeDefined();
+
+    expect(config).toEqual({
+      this: "transformed",
+    });
   });
 });
