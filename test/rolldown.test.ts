@@ -4,7 +4,6 @@ import { rolldown } from "rolldown";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 import TOMLPlugin from "../src/rolldown";
-import { removeComments } from "./utils";
 
 describe("rolldown", () => {
   it("expect toml import to be a json object", async () => {
