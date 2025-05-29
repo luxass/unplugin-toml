@@ -1,4 +1,5 @@
 import { join } from "node:path";
+import { dedent } from "@luxass/utils";
 import { build } from "vite";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
@@ -6,7 +7,9 @@ import TOMLPlugin from "../src/vite";
 
 describe("vite", () => {
   it("expect toml import to be a json object", async () => {
-    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"));
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"), {
+      cleanup: false,
+    });
 
     expect(testdirPath).toBeDefined();
 
@@ -30,13 +33,14 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const firstResult = result[0];
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(firstResult).toBeDefined();
-    expect(firstResult?.output).toBeDefined();
-    expect(firstResult?.output[0]).toBeDefined();
-    expect(firstResult?.output[0].code).toBeDefined();
-    expect(firstResult?.output[0].code).toMatchSnapshot();
+    expect(config).toEqual({
+      pluginDir: "./plugins",
+      web: { enabled: true },
+      logging: { type: "stdout", level: "info" },
+    });
   });
 
   it("expect toml import to be a string", async () => {
@@ -64,13 +68,19 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const firstResult = result[0];
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(firstResult).toBeDefined();
-    expect(firstResult?.output).toBeDefined();
-    expect(firstResult?.output[0]).toBeDefined();
-    expect(firstResult?.output[0].code).toBeDefined();
-    expect(firstResult?.output[0].code).toMatchSnapshot();
+    expect(config).toMatch(dedent`
+      pluginDir = "./plugins"
+
+      [web]
+      enabled = true
+
+      [logging]
+      type = "stdout"
+      level = "info"
+    `);
   });
 
   it("handle transforms", async () => {
@@ -106,12 +116,11 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const firstResult = result[0];
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(firstResult).toBeDefined();
-    expect(firstResult?.output).toBeDefined();
-    expect(firstResult?.output[0]).toBeDefined();
-    expect(firstResult?.output[0].code).toBeDefined();
-    expect(firstResult?.output[0].code).toMatchSnapshot();
+    expect(config).toEqual({
+      this: "transformed",
+    });
   });
 });
