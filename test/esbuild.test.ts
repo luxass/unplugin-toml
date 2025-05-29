@@ -1,22 +1,22 @@
 import { join } from "node:path";
+import { dedent } from "@luxass/utils";
 import { build } from "esbuild";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 import TOMLPlugin from "../src/esbuild";
-import { removeComments } from "./utils";
 
-describe("handles toml", () => {
+describe("esbuild", () => {
   it("expect toml import to be a json object", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"));
 
     expect(testdirPath).toBeDefined();
 
-    const result = await build({
+    await build({
       entryPoints: [
         join(testdirPath, "basic.js"),
       ],
       format: "esm",
-      write: false,
+      outfile: join(testdirPath, "output.js"),
       bundle: true,
       minifySyntax: false,
       plugins: [
@@ -24,7 +24,14 @@ describe("handles toml", () => {
       ],
     });
 
-    expect(removeComments(result.outputFiles[0]?.text)).toMatchSnapshot();
+    const config = await import(join(testdirPath, "output.js")).then((m) => m.config);
+    expect(config).toBeDefined();
+
+    expect(config).toEqual({
+      pluginDir: "./plugins",
+      web: { enabled: true },
+      logging: { type: "stdout", level: "info" },
+    });
   });
 
   it("expect toml import to be a string", async () => {
@@ -32,12 +39,12 @@ describe("handles toml", () => {
 
     expect(testdirPath).toBeDefined();
 
-    const result = await build({
+    await build({
       entryPoints: [
         join(testdirPath, "basic-raw.js"),
       ],
       format: "esm",
-      write: false,
+      outfile: join(testdirPath, "output-raw.js"),
       bundle: true,
       minifySyntax: false,
       plugins: [
@@ -45,35 +52,52 @@ describe("handles toml", () => {
       ],
     });
 
-    expect(removeComments(result.outputFiles[0]?.text)).toMatchSnapshot();
-  });
-});
+    const config = await import(join(testdirPath, "output-raw.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-it("handle transforms", async () => {
-  const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/transform"));
+    expect(config).toMatch(dedent`
+      pluginDir = "./plugins"
 
-  expect(testdirPath).toBeDefined();
+      [web]
+      enabled = true
 
-  const result = await build({
-    entryPoints: [
-      join(testdirPath, "transform.js"),
-    ],
-    format: "esm",
-    write: false,
-    bundle: true,
-    minifySyntax: false,
-    plugins: [
-      TOMLPlugin({
-        transform(data) {
-          if (data != null && typeof data === "object" && "this" in data) {
-            return {
-              this: "transformed",
-            };
-          }
-        },
-      }),
-    ],
+      [logging]
+      type = "stdout"
+      level = "info"
+    `);
   });
 
-  expect(removeComments(result.outputFiles[0]?.text)).toMatchSnapshot();
+  it("handle transforms", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/transform"));
+
+    expect(testdirPath).toBeDefined();
+
+    await build({
+      entryPoints: [
+        join(testdirPath, "transform.js"),
+      ],
+      format: "esm",
+      outfile: join(testdirPath, "output-transform.js"),
+      bundle: true,
+      minifySyntax: false,
+      plugins: [
+        TOMLPlugin({
+          transform(data) {
+            if (data != null && typeof data === "object" && "this" in data) {
+              return {
+                this: "transformed",
+              };
+            }
+          },
+        }),
+      ],
+    });
+
+    const config = await import(join(testdirPath, "output-transform.js")).then((m) => m.config);
+    expect(config).toBeDefined();
+
+    expect(config).toEqual({
+      this: "transformed",
+    });
+  });
 });
