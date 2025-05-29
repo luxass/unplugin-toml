@@ -51,7 +51,7 @@ async function webpack(config: Configuration, testdirPath: string): Promise<Webp
   });
 }
 
-describe("handles toml", () => {
+describe("webpack", () => {
   it("expect toml import to be a json object", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"));
 
@@ -85,29 +85,29 @@ describe("handles toml", () => {
 
     expect(removeComments(content)).toMatchSnapshot();
   });
-});
 
-it("handle transforms", async () => {
-  const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/transform"));
+  it("handle transforms", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/transform"));
 
-  expect(testdirPath).toBeDefined();
+    expect(testdirPath).toBeDefined();
 
-  const { file } = await webpack({
-    entry: join(testdirPath, "transform.js"),
-    plugins: [
-      TOMLPlugin({
-        transform(data) {
-          if (data != null && typeof data === "object" && "this" in data) {
-            return {
-              this: "transformed",
-            };
-          }
-        },
-      }),
-    ],
-  }, testdirPath);
+    const { file } = await webpack({
+      entry: join(testdirPath, "transform.js"),
+      plugins: [
+        TOMLPlugin({
+          transform(data) {
+            if (data != null && typeof data === "object" && "this" in data) {
+              return {
+                this: "transformed",
+              };
+            }
+          },
+        }),
+      ],
+    }, testdirPath);
 
-  const content = await readFile(join(testdirPath, "dist", file), "utf-8");
+    const content = await readFile(join(testdirPath, "dist", file), "utf-8");
 
-  expect(removeComments(content)).toMatchSnapshot();
+    expect(removeComments(content)).toMatchSnapshot();
+  });
 });

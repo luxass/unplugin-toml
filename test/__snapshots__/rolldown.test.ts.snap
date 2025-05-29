@@ -1,14 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`handle transforms 1`] = `
-"var data = { "this": "transformed" };
-var config_default = data;
-
-console.log(config_default);
-"
-`;
-
-exports[`handles toml > expect toml import to be a json object 1`] = `
+exports[`rolldown > expect toml import to be a json object 1`] = `
 "var data = {
 	"pluginDir": "./plugins",
 	"web": { "enabled": true },
@@ -19,13 +11,18 @@ exports[`handles toml > expect toml import to be a json object 1`] = `
 };
 var config_default = data;
 
-console.log(config_default);
-"
+export { config_default as config };"
 `;
 
-exports[`handles toml > expect toml import to be a string 1`] = `
+exports[`rolldown > expect toml import to be a string 1`] = `
 "var config_default = "pluginDir = \\"./plugins\\"\\n\\n[web]\\nenabled = true\\n\\n[logging]\\ntype = \\"stdout\\"\\nlevel = \\"info\\"\\n";
 
-console.log(config_default);
-"
+export { config_default as config };"
+`;
+
+exports[`rolldown > handle transforms 1`] = `
+"var data = { "this": "transformed" };
+var config_default = data;
+
+export { config_default as config };"
 `;
