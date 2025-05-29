@@ -1,3 +1,3 @@
 import config from "./config.toml?raw";
 
-console.log(config);
+export { config };
