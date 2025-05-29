@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`rspack > expect toml import to be a json object 1`] = `""`;
-
-exports[`rspack > expect toml import to be a string 1`] = `""`;
-
-exports[`rspack > handle transforms 1`] = `""`;
