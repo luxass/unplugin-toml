@@ -1,4 +1,4 @@
-import type { Configuration, Stats } from "@rspack/core";
+import type { Configuration } from "@rspack/core";
 import { join } from "node:path";
 import { dedent } from "@luxass/utils";
 import { rspack as createRspack } from "@rspack/core";
