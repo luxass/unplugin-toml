@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`webpack > expect toml import to be a json object 1`] = `""`;
-
-exports[`webpack > expect toml import to be a string 1`] = `""`;
-
-exports[`webpack > handle transforms 1`] = `""`;

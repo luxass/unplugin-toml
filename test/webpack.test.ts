@@ -1,25 +1,25 @@
-import type { Configuration, Stats } from "webpack";
-import { readFile } from "node:fs/promises";
+import type { Configuration } from "webpack";
 import { join } from "node:path";
+import { dedent } from "@luxass/utils";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 import { webpack as createWebpack } from "webpack";
 import TOMLPlugin from "../src/webpack";
-import { removeComments } from "./utils";
 
-interface WebpackResult {
-  stats: Stats;
-  json: ReturnType<Stats["toJson"]>;
-  file: string;
-}
-
-async function webpack(config: Configuration, testdirPath: string): Promise<WebpackResult> {
+async function webpack(config: Configuration, testdirPath: string): Promise<null> {
   return new Promise((resolve, reject) => {
     const compiler = createWebpack({
       optimization: {
         minimize: true,
+        usedExports: false,
+      },
+      experiments: {
+        outputModule: true,
       },
       output: {
+        library: {
+          type: "module",
+        },
         path: join(testdirPath, "dist"),
         filename: "bundle.js",
       },
@@ -37,16 +37,7 @@ async function webpack(config: Configuration, testdirPath: string): Promise<Webp
         return;
       }
 
-      const json = stats.toJson();
-      const files = json.assetsByChunkName?.main;
-      if (!files || !Array.isArray(files) || files[0] == null) {
-        reject(new Error("main chunk not found"));
-        return;
-      }
-
-      const file = files[0];
-
-      resolve({ stats, json, file });
+      resolve(null);
     });
   });
 }
@@ -57,16 +48,21 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    const { file } = await webpack({
+    await webpack({
       entry: join(testdirPath, "basic.js"),
       plugins: [
         TOMLPlugin(),
       ],
     }, testdirPath);
 
-    const content = await readFile(join(testdirPath, "dist", file), "utf-8");
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(removeComments(content)).toMatchSnapshot();
+    expect(config).toEqual({
+      pluginDir: "./plugins",
+      web: { enabled: true },
+      logging: { type: "stdout", level: "info" },
+    });
   });
 
   it("expect toml import to be a string", async () => {
@@ -74,16 +70,26 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    const { file } = await webpack({
+    await webpack({
       entry: join(testdirPath, "basic-raw.js"),
       plugins: [
         TOMLPlugin(),
       ],
     }, testdirPath);
 
-    const content = await readFile(join(testdirPath, "dist", file), "utf-8");
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(removeComments(content)).toMatchSnapshot();
+    expect(config).toMatch(dedent`
+      pluginDir = "./plugins"
+
+      [web]
+      enabled = true
+
+      [logging]
+      type = "stdout"
+      level = "info"
+    `);
   });
 
   it("handle transforms", async () => {
@@ -91,7 +97,7 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    const { file } = await webpack({
+    await webpack({
       entry: join(testdirPath, "transform.js"),
       plugins: [
         TOMLPlugin({
@@ -106,8 +112,11 @@ describe("webpack", () => {
       ],
     }, testdirPath);
 
-    const content = await readFile(join(testdirPath, "dist", file), "utf-8");
+    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
+    expect(config).toBeDefined();
 
-    expect(removeComments(content)).toMatchSnapshot();
+    expect(config).toEqual({
+      this: "transformed",
+    });
   });
 });
