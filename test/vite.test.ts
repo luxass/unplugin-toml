@@ -7,9 +7,7 @@ import TOMLPlugin from "../src/vite";
 
 describe("vite", () => {
   it("expect toml import to be a json object", async () => {
-    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"), {
-      cleanup: false,
-    });
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/basic"));
 
     expect(testdirPath).toBeDefined();
 
