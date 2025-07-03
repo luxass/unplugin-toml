@@ -1,6 +1,6 @@
 {
   "name": "unplugin-toml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allow importing TOML files as JSON or Strings",
   "type": "module",
   "author": {
