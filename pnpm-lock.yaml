@@ -147,8 +147,8 @@ catalogs:
       specifier: 1.4.2
       version: 1.4.2
     unplugin:
-      specifier: 2.3.10
-      version: 2.3.10
+      specifier: 3.0.0
+      version: 3.0.0
 
 importers:
 
@@ -165,7 +165,7 @@ importers:
         version: 1.4.2
       unplugin:
         specifier: catalog:prod
-        version: 2.3.10
+        version: 3.0.0
     devDependencies:
       '@luxass/eslint-config':
         specifier: catalog:dev
@@ -6861,6 +6861,10 @@ packages:
   unplugin@2.3.10:
     resolution: {integrity: sha512-6NCPkv1ClwH+/BGE9QeoTIl09nuiAt0gS28nn1PvYXsGKRwM2TCbFA2QiilmehPDTXIe684k4rZI1yl3A1PCUw==}
     engines: {node: '>=18.12.0'}
+
+  unplugin@3.0.0:
+    resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   unrun@0.2.0:
     resolution: {integrity: sha512-iaCxWG/6kmjP3wUTBheowjFm6LuI8fd/A3Uz7DbMoz8HvQsJThh7tWZKWJfVltOSK3LuIJFzepr7g6fbuhUasw==}
@@ -15089,6 +15093,12 @@ snapshots:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       acorn: 8.15.0
+      picomatch: 4.0.3
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@3.0.0:
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.3
       webpack-virtual-modules: 0.6.2
 
