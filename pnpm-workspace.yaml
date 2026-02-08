@@ -3,7 +3,7 @@ packages:
 
 catalogs:
   dev:
-    "@luxass/eslint-config": 6.0.1
+    "@luxass/eslint-config": 7.0.0
     "@luxass/utils": 2.7.2
     "@nuxt/kit": 4.2.0
     "@nuxt/schema": 4.2.0
