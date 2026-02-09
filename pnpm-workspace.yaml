@@ -47,7 +47,7 @@ catalogs:
     vite-plugin-vue-devtools: 8.0.3
     vue: 3.5.22
     vue-loader: 17.4.2
-    vue-router: 4.6.3
+    vue-router: 5.0.2
     vue-tsc: 3.1.2
 
   prod:
