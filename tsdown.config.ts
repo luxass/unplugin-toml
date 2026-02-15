@@ -13,7 +13,7 @@ export default defineConfig({
   exports: {
     packageJson: false,
     customExports(exports) {
-      exports["./types"] = { types: "./yaml.d.ts" };
+      exports["./types"] = { types: "./toml.d.ts" };
       exports["./package.json"] = "./package.json";
 
       return exports;

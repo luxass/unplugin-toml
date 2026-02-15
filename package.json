@@ -36,7 +36,7 @@
     "./rollup": "./dist/rollup.mjs",
     "./rspack": "./dist/rspack.mjs",
     "./types": {
-      "types": "./yaml.d.ts"
+      "types": "./toml.d.ts"
     },
     "./vite": "./dist/vite.mjs",
     "./webpack": "./dist/webpack.mjs",
@@ -70,7 +70,7 @@
   "peerDependencies": {
     "@nuxt/kit": ">=3",
     "@nuxt/schema": ">=3",
-    "@rspack/core": "^1.0.13",
+    "@rspack/core": ">=1",
     "astro": ">=3",
     "esbuild": "*",
     "rolldown": ">=0.14.0",
