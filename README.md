@@ -7,7 +7,7 @@ Allow import Toml file for Vite, Webpack, Rollup and esbuild. With TypeScript su
 
 <p align="center">
 <br />
-<a href="https://stackblitz.com/github/luxass/unplugin-toml/tree/main/examples/vite-vue?file=vite.config.ts"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" /></a>
+<a href="https://stackblitz.com/github/luxass/unplugin-toml/tree/main/examples/vite-vue?file=vite.config.ts"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz" /></a>
 </p>
 
 ## Install
