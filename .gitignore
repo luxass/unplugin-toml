@@ -15,3 +15,4 @@ dist
 
 .vite-inspect
 .vitest-testdirs
+.npmrc.tmp
