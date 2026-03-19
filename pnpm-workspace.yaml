@@ -21,7 +21,7 @@ catalogs:
     tsdown: 0.21.0
     typescript: 5.9.3
     vite: 7.3.1
-    vitest: 4.0.18
+    vitest: 4.1.0
     vitest-testdirs: 4.4.2
     webpack: 5.105.4
 
