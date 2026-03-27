@@ -19,8 +19,6 @@
     "@types/react": "catalog:dev",
     "@types/react-dom": "catalog:dev",
     "@vitejs/plugin-react": "catalog:example",
-    "autoprefixer": "catalog:example",
-    "postcss": "catalog:example",
     "shiki": "catalog:example",
     "tailwindcss": "catalog:example",
     "typescript": "catalog:dev",

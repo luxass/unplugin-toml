@@ -33,7 +33,6 @@ catalogs:
     "@vitejs/plugin-vue": 6.0.5
     astro: 6.1.1
     autoprefixer: 10.4.27
-    next: 16.2.1
     postcss: 8.5.8
     postcss-loader: 8.2.1
     react: 19.2.4
