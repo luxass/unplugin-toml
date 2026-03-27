@@ -1,4 +1,4 @@
-import type { RspackPluginFunction } from "@rspack/core";
+import type { RspackPluginFunction, SwcLoaderOptions } from "@rspack/core";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
 import { VueLoaderPlugin } from "rspack-vue-loader";
