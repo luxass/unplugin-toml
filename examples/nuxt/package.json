@@ -20,9 +20,5 @@
     "typescript": "catalog:dev",
     "unplugin-toml": "workspace:*",
     "vue-tsc": "catalog:example"
-  },
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
   }
 }

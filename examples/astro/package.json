@@ -21,9 +21,5 @@
   "devDependencies": {
     "unplugin-toml": "workspace:*",
     "vite-plugin-inspect": "catalog:example"
-  },
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
   }
 }

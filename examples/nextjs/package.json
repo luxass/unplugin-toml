@@ -23,9 +23,5 @@
     "tailwindcss": "catalog:example",
     "typescript": "catalog:dev",
     "unplugin-toml": "workspace:*"
-  },
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
   }
 }
