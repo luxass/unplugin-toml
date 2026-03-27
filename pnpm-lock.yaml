@@ -416,15 +416,12 @@ importers:
         specifier: catalog:example
         version: 5.0.4(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))
     devDependencies:
+      '@tailwindcss/vite':
+        specifier: catalog:example
+        version: 4.2.2(vite@8.0.3(@types/node@25.3.5)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.44.0)(yaml@2.8.2))
       '@vitejs/plugin-vue':
         specifier: catalog:example
         version: 6.0.5(vite@8.0.3(@types/node@25.3.5)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.44.0)(yaml@2.8.2))(vue@3.5.31(typescript@6.0.2))
-      autoprefixer:
-        specifier: catalog:example
-        version: 10.4.27(postcss@8.5.8)
-      postcss:
-        specifier: catalog:example
-        version: 8.5.8
       shiki:
         specifier: catalog:example
         version: 4.0.2

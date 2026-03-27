@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import Vue from "@vitejs/plugin-vue";
 import TomlPlugin from "unplugin-toml/vite";
 import VueRouter from "unplugin-vue-router/vite";
@@ -13,5 +14,6 @@ export default defineConfig({
     VueDevTools(),
     TomlPlugin(),
     Inspect(),
+    tailwindcss(),
   ],
 });
