@@ -1,11 +1,13 @@
 import type { RspackPluginFunction } from "@rspack/core";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
+import { VueLoaderPlugin } from "rspack-vue-loader";
 import TomlPlugin from "unplugin-toml/rspack";
-import { VueLoaderPlugin } from "vue-loader";
+
+// Target browsers, see: https://github.com/browserslist/browserslist
+const targets = ["last 2 versions", "> 0.2%", "not dead", "Firefox ESR"];
 
 export default defineConfig({
-  context: __dirname,
   entry: {
     main: "./src/main.ts",
   },
@@ -27,7 +29,7 @@ export default defineConfig({
     rules: [
       {
         test: /\.vue$/,
-        loader: "vue-loader",
+        loader: "rspack-vue-loader",
         options: {
           experimentalInlineMatchResource: true,
         },
@@ -38,21 +40,13 @@ export default defineConfig({
           {
             loader: "builtin:swc-loader",
             options: {
-              sourceMap: true,
               jsc: {
                 parser: {
                   syntax: "typescript",
                 },
               },
-              env: {
-                targets: [
-                  "chrome >= 87",
-                  "edge >= 88",
-                  "firefox >= 78",
-                  "safari >= 14",
-                ],
-              },
-            },
+              env: { targets },
+            } satisfies SwcLoaderOptions,
           },
         ],
       },
@@ -62,19 +56,7 @@ export default defineConfig({
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: {
-                  tailwindcss: {},
-                  autoprefixer: {},
-                },
-              },
-            },
-          },
-        ],
+        use: ["postcss-loader"],
         type: "css",
       },
     ],

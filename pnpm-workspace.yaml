@@ -29,6 +29,7 @@ catalogs:
     "@astrojs/check": 0.9.8
     "@nuxtjs/tailwindcss": 6.14.0
     "@rspack/cli": 1.7.10
+    "@tailwindcss/postcss": 4.2.2
     "@tailwindcss/vite": 4.2.2
     "@vitejs/plugin-react": 6.0.1
     "@vitejs/plugin-vue": 6.0.5
@@ -41,6 +42,7 @@ catalogs:
     react: 19.2.4
     react-dom: 19.2.4
     react-router-dom: 7.13.2
+    rspack-vue-loader: 17.4.5
     shiki: 4.0.2
     tailwindcss: 4.2.2
     ts-node: 10.9.2
@@ -48,7 +50,6 @@ catalogs:
     vite-plugin-inspect: 11.3.3
     vite-plugin-vue-devtools: 8.1.1
     vue: 3.5.31
-    vue-loader: 17.4.2
     vue-router: 5.0.4
     vue-tsc: 3.2.6
 

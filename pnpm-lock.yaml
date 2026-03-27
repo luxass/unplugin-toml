@@ -73,6 +73,9 @@ catalogs:
     '@rspack/cli':
       specifier: 1.7.10
       version: 1.7.10
+    '@tailwindcss/postcss':
+      specifier: 4.2.2
+      version: 4.2.2
     '@tailwindcss/vite':
       specifier: 4.2.2
       version: 4.2.2
@@ -109,6 +112,9 @@ catalogs:
     react-router-dom:
       specifier: 7.13.2
       version: 7.13.2
+    rspack-vue-loader:
+      specifier: 17.4.5
+      version: 17.4.5
     shiki:
       specifier: 4.0.2
       version: 4.0.2
@@ -130,9 +136,6 @@ catalogs:
     vue:
       specifier: 3.5.31
       version: 3.5.31
-    vue-loader:
-      specifier: 17.4.2
-      version: 17.4.2
     vue-router:
       specifier: 5.0.4
       version: 5.0.4
@@ -324,6 +327,9 @@ importers:
       '@rspack/core':
         specifier: catalog:dev
         version: 1.7.10(@swc/helpers@0.5.17)
+      '@tailwindcss/postcss':
+        specifier: catalog:example
+        version: 4.2.2
       autoprefixer:
         specifier: catalog:example
         version: 10.4.27(postcss@8.5.8)
@@ -333,6 +339,9 @@ importers:
       postcss-loader:
         specifier: catalog:example
         version: 8.2.1(@rspack/core@1.7.10(@swc/helpers@0.5.17))(postcss@8.5.8)(typescript@6.0.2)(webpack@5.105.4(esbuild@0.27.4))
+      rspack-vue-loader:
+        specifier: catalog:example
+        version: 17.4.5(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))(webpack@5.105.4(esbuild@0.27.4))
       tailwindcss:
         specifier: catalog:example
         version: 4.2.2
@@ -345,9 +354,6 @@ importers:
       unplugin-toml:
         specifier: workspace:*
         version: link:../..
-      vue-loader:
-        specifier: catalog:example
-        version: 17.4.2(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))(webpack@5.105.4(esbuild@0.27.4))
       vue-tsc:
         specifier: catalog:example
         version: 3.2.6(typescript@6.0.2)
@@ -2860,6 +2866,9 @@ packages:
     resolution: {integrity: sha512-qEUA07+E5kehxYp9BVMpq9E8vnJuBHfJEC0vPC5e7iL/hw7HR61aDKoVoKzrG+QKp56vhNZe4qwkRmMC0zDLvg==}
     engines: {node: '>= 20'}
 
+  '@tailwindcss/postcss@4.2.2':
+    resolution: {integrity: sha512-n4goKQbW8RVXIbNKRB/45LzyUqN451deQK0nzIeauVEqjlI49slUlgKYJM2QyUzap/PcpnS7kzSUmPb1sCRvYQ==}
+
   '@tailwindcss/vite@4.2.2':
     resolution: {integrity: sha512-mEiF5HO1QqCLXoNEfXVA1Tzo+cYsrqV7w9Juj2wdUFyW07JRenqMG225MvPwr3ZD9N1bFQj46X7r33iHxLUW0w==}
     peerDependencies:
@@ -4895,9 +4904,6 @@ packages:
     resolution: {integrity: sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==}
     engines: {node: '>= 0.4'}
 
-  hash-sum@2.0.0:
-    resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
-
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
@@ -6722,6 +6728,18 @@ packages:
   rou3@0.8.1:
     resolution: {integrity: sha512-ePa+XGk00/3HuCqrEnK3LxJW7I0SdNg6EFzKUJG73hMAdDcOUC/i/aSz7LSDwLrGr33kal/rqOGydzwl6U7zBA==}
 
+  rspack-vue-loader@17.4.5:
+    resolution: {integrity: sha512-i88hGa4mySkwiP7HqRICIAhomcMdkNCZ5tQGcxkcUWmDfC2QfeQegFBEKY4RdbuxJ3p1Ocj/Ul6Sh4yl6L7mDg==}
+    peerDependencies:
+      '@vue/compiler-sfc': '*'
+      vue: '*'
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      '@vue/compiler-sfc':
+        optional: true
+      vue:
+        optional: true
+
   run-applescript@7.0.0:
     resolution: {integrity: sha512-9by4Ij99JUr/MCFBUkDKLWK3G9HVXmabKz9U5MlIAIuvuzkiOicRYs8XJLxX+xahD+mLiiCYDqF9dKAgtzKP1A==}
     engines: {node: '>=18'}
@@ -7872,18 +7890,6 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
 
-  vue-loader@17.4.2:
-    resolution: {integrity: sha512-yTKOA4R/VN4jqjw4y5HrynFL8AK0Z3/Jt7eOJXEitsm0GMRHDBjCfCiuTiLP7OESvsZYo2pATCWhDqxC5ZrM6w==}
-    peerDependencies:
-      '@vue/compiler-sfc': '*'
-      vue: '*'
-      webpack: ^4.1.0 || ^5.0.0-0
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-      vue:
-        optional: true
-
   vue-router@5.0.3:
     resolution: {integrity: sha512-nG1c7aAFac7NYj8Hluo68WyWfc41xkEjaR0ViLHCa3oDvTQ/nIuLJlXJX1NUPw/DXzx/8+OKMng045HHQKQKWw==}
     peerDependencies:
@@ -7927,10 +7933,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  watchpack@2.4.4:
-    resolution: {integrity: sha512-c5EGNOiyxxV5qmTtAB7rbiXxi1ooX1pQKMLX/MIabJjRA0SJBQOjKF+KSVfHkr9U1cADPon0mRiVe/riyaiDUA==}
-    engines: {node: '>=10.13.0'}
 
   watchpack@2.5.1:
     resolution: {integrity: sha512-Zn5uXdcFNIA1+1Ei5McRd+iRzfhENPCe7LeABkJtNulSxjma+l7ltNx55BWZkRlwRnpOgHqxnjyaDgJnNXnqzg==}
@@ -10308,6 +10310,14 @@ snapshots:
       '@tailwindcss/oxide-wasm32-wasi': 4.2.2
       '@tailwindcss/oxide-win32-arm64-msvc': 4.2.2
       '@tailwindcss/oxide-win32-x64-msvc': 4.2.2
+
+  '@tailwindcss/postcss@4.2.2':
+    dependencies:
+      '@alloc/quick-lru': 5.2.0
+      '@tailwindcss/node': 4.2.2
+      '@tailwindcss/oxide': 4.2.2
+      postcss: 8.5.8
+      tailwindcss: 4.2.2
 
   '@tailwindcss/vite@4.2.2(vite@8.0.3(@types/node@25.3.5)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.44.0)(yaml@2.8.2))':
     dependencies:
@@ -12774,8 +12784,6 @@ snapshots:
     dependencies:
       has-symbols: 1.1.0
 
-  hash-sum@2.0.0: {}
-
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
@@ -15140,6 +15148,15 @@ snapshots:
 
   rou3@0.8.1: {}
 
+  rspack-vue-loader@17.4.5(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))(webpack@5.105.4(esbuild@0.27.4)):
+    dependencies:
+      chalk: 4.1.2
+      watchpack: 2.5.1
+      webpack: 5.105.4(esbuild@0.27.4)
+    optionalDependencies:
+      '@vue/compiler-sfc': 3.5.31
+      vue: 3.5.31(typescript@6.0.2)
+
   run-applescript@7.0.0: {}
 
   run-parallel@1.2.0:
@@ -16390,16 +16407,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vue-loader@17.4.2(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))(webpack@5.105.4(esbuild@0.27.4)):
-    dependencies:
-      chalk: 4.1.2
-      hash-sum: 2.0.0
-      watchpack: 2.4.4
-      webpack: 5.105.4(esbuild@0.27.4)
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.5.31
-      vue: 3.5.31(typescript@6.0.2)
-
   vue-router@5.0.3(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2)):
     dependencies:
       '@babel/generator': 7.29.1
@@ -16461,11 +16468,6 @@ snapshots:
       '@vue/shared': 3.5.31
     optionalDependencies:
       typescript: 6.0.2
-
-  watchpack@2.4.4:
-    dependencies:
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
 
   watchpack@2.5.1:
     dependencies:
