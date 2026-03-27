@@ -8,7 +8,7 @@
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.33.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,8 +19,12 @@
     "toml",
     "unplugin",
     "vite",
+    "vite-plugin",
     "webpack",
     "rollup",
+    "rollup-plugin",
+    "rolldown",
+    "rolldown-plugin",
     "esbuild",
     "nuxt",
     "astro"
@@ -48,7 +52,7 @@
     "toml.d.ts"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "workspaces": [
     "playground/*"
@@ -68,14 +72,14 @@
     "typecheck": "tsc --noEmit && pnpm -r typecheck"
   },
   "peerDependencies": {
-    "@nuxt/kit": ">=3",
-    "@nuxt/schema": ">=3",
-    "@rspack/core": ">=1",
-    "astro": ">=3",
+    "@nuxt/kit": "^3.0.0 || ^4.0.0",
+    "@nuxt/schema": "^3.0.0 || ^4.0.0",
+    "@rspack/core": "^1.5.0",
+    "astro": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
     "esbuild": "*",
-    "rolldown": ">=0.14.0",
-    "rollup": ">=3",
-    "vite": ">=3",
+    "rolldown": "^1.0.0-rc.5",
+    "rollup": ">=4",
+    "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
     "webpack": "^4 || ^5"
   },
   "peerDependenciesMeta": {
@@ -119,6 +123,7 @@
     "@nuxt/schema": "catalog:dev",
     "@rspack/core": "catalog:dev",
     "@types/node": "catalog:dev",
+    "astro": "catalog:example",
     "esbuild": "catalog:dev",
     "eslint": "catalog:dev",
     "publint": "catalog:dev",
