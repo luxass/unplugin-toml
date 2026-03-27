@@ -15,13 +15,16 @@ import { PLUGIN_NAME } from "./constants";
 export type { TomlOptions };
 
 const PREFIX = `\0virtual:toml:`;
+const DEFAULT_INCLUDE_RE = /\.toml(\?raw)?$/;
+const RAW_TOML_ID_RE = /\.toml\?raw$/;
+const CRLF_RE = /\r\n/g;
 
 /**
  * A unplugin factory, used by Unplugin to create a new plugin instance.
  */
 export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (options = {}) => {
   const filter = createFilter(
-    options.include || /\.toml(\?raw)?$/,
+    options.include || DEFAULT_INCLUDE_RE,
   );
 
   return {
@@ -48,7 +51,7 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
       return `var data = ${JSON.stringify(content, null, 2)};\n\nexport default data;`;
     },
     resolveId(id, importer) {
-      if (/\.toml\?raw$/.test(id) && importer) {
+      if (RAW_TOML_ID_RE.test(id) && importer) {
         const [relativePath] = id.split("?raw");
         const fullPath = join(dirname(importer), relativePath!);
         return `${PREFIX}${fullPath}:raw`;
@@ -71,7 +74,7 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
         throw new Error("invalid path can't read toml file");
       }
 
-      const content = (await readFile(path, "utf-8")).replace(/\r\n/g, "\n");
+      const content = (await readFile(path, "utf-8")).replace(CRLF_RE, "\n");
 
       return {
         code: `export default ${JSON.stringify(content)}`,
