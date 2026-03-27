@@ -13,7 +13,6 @@ export default defineConfig({
     extensions: ["...", ".ts", ".vue"],
   },
   plugins: [
-    // @ts-expect-error asd
     TomlPlugin(),
     new VueLoaderPlugin() as RspackPluginFunction,
     new rspack.HtmlRspackPlugin({
