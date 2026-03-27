@@ -26,8 +26,6 @@ catalogs:
     webpack: 5.105.4
 
   example:
-    "@astrojs/check": 0.9.8
-    "@nuxtjs/tailwindcss": 6.14.0
     "@rspack/cli": 1.7.10
     "@tailwindcss/postcss": 4.2.2
     "@tailwindcss/vite": 4.2.2
@@ -36,7 +34,6 @@ catalogs:
     astro: 6.1.1
     autoprefixer: 10.4.27
     next: 16.2.1
-    nuxt: 4.4.2
     postcss: 8.5.8
     postcss-loader: 8.2.1
     react: 19.2.4
