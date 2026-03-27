@@ -123,29 +123,6 @@ build({
 <br/></details>
 
 <details>
-<summary>Farm</summary><br/>
-
-```ts
-// farm.config.ts
-import { defineConfig } from "@farmfe/core";
-import vue from "@vitejs/plugin-vue";
-import TOMLPlugin from "unplugin-toml/farm";
-
-export default defineConfig({
-  vitePlugins: [
-    vue(),
-  ],
-  plugins: [
-    TOMLPlugin({
-      /* options */
-    })
-  ]
-});
-```
-
-<br/></details>
-
-<details>
 <summary>Rspack</summary><br/>
 
 ```ts
