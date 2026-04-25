@@ -123,7 +123,7 @@ describe("rspack", () => {
                 };
               }
 
-              return undefined;
+              return data;
             },
           }),
         ],

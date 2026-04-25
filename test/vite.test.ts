@@ -14,8 +14,13 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      cacheDir: join(testdirPath, ".vite"),
+      configFile: false,
+      envFile: false,
       logLevel: "silent",
+      root: testdirPath,
       build: {
+        emptyOutDir: true,
         lib: {
           entry: join(testdirPath, "basic.js"),
           formats: ["es"],
@@ -50,8 +55,13 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      cacheDir: join(testdirPath, ".vite"),
+      configFile: false,
+      envFile: false,
       logLevel: "silent",
+      root: testdirPath,
       build: {
+        emptyOutDir: true,
         lib: {
           entry: join(testdirPath, "basic-raw.js"),
           formats: ["es"],
@@ -91,8 +101,13 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      cacheDir: join(testdirPath, ".vite"),
+      configFile: false,
+      envFile: false,
       logLevel: "silent",
+      root: testdirPath,
       build: {
+        emptyOutDir: true,
         lib: {
           entry: join(testdirPath, "transform.js"),
           formats: ["es"],
@@ -111,7 +126,7 @@ describe("vite", () => {
               };
             }
 
-            return undefined;
+            return data;
           },
         }),
       ],

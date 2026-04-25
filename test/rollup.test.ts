@@ -81,7 +81,7 @@ describe("rollup", () => {
               };
             }
 
-            return undefined;
+            return data;
           },
         }),
       ],

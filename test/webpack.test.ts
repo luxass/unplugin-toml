@@ -121,7 +121,7 @@ describe("webpack", () => {
                 };
               }
 
-              return undefined;
+              return data;
             },
           }),
         ],
