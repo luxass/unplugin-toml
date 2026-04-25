@@ -35,7 +35,7 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
     },
     transform(code, id) {
       if (id.endsWith("?raw")) {
-        return `${code}`;
+        return code;
       }
 
       let content = parse(code);
@@ -87,7 +87,7 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
 /**
  * The main unplugin instance.
  */
-export const unplugin: UnpluginInstance<TomlOptions | undefined, boolean> =
+export const unplugin: UnpluginInstance<TomlOptions | undefined> =
   /* #__PURE__ */ createUnplugin(unpluginFactory);
 
 export default unplugin;
