@@ -52,7 +52,7 @@ catalogs:
     "@vitejs/plugin-vue": 6.0.5
     astro: 6.1.1
     autoprefixer: 10.4.27
-    postcss: 8.5.8
+    postcss: 8.5.10
     postcss-loader: 8.2.1
     react: 19.2.4
     react-dom: 19.2.4
@@ -80,3 +80,6 @@ overrides:
   chokidar: 5.0.0
   semver: 7.7.4
   undici-types: 6.24.0
+minimumReleaseAgeExclude:
+  # Renovate security update: postcss@8.5.10
+  - postcss@8.5.10

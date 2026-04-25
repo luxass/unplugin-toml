@@ -80,8 +80,8 @@ catalogs:
       specifier: 10.4.27
       version: 10.4.27
     postcss:
-      specifier: 8.5.8
-      version: 8.5.8
+      specifier: 8.5.10
+      version: 8.5.10
     postcss-loader:
       specifier: 8.2.1
       version: 8.2.1
@@ -245,13 +245,13 @@ importers:
         version: 4.2.2
       autoprefixer:
         specifier: catalog:example
-        version: 10.4.27(postcss@8.5.8)
+        version: 10.4.27(postcss@8.5.10)
       postcss:
         specifier: catalog:example
-        version: 8.5.8
+        version: 8.5.10
       postcss-loader:
         specifier: catalog:example
-        version: 8.2.1(@rspack/core@1.7.10(@swc/helpers@0.5.17))(postcss@8.5.8)(typescript@6.0.2)(webpack@5.105.4(esbuild@0.27.4))
+        version: 8.2.1(@rspack/core@1.7.10(@swc/helpers@0.5.17))(postcss@8.5.10)(typescript@6.0.2)(webpack@5.105.4(esbuild@0.27.4))
       rspack-vue-loader:
         specifier: catalog:example
         version: 17.4.5(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))(webpack@5.105.4(esbuild@0.27.4))
@@ -3622,8 +3622,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.8:
-    resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
+  postcss@8.5.10:
+    resolution: {integrity: sha512-pMMHxBOZKFU6HgAZ4eyGnwXF/EvPGGqUr0MnZ5+99485wwW41kW91A4LOGxSHhgugZmSChL5AlElNdwlNgcnLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   prismjs@1.30.0:
@@ -5838,7 +5838,7 @@ snapshots:
       '@alloc/quick-lru': 5.2.0
       '@tailwindcss/node': 4.2.2
       '@tailwindcss/oxide': 4.2.2
-      postcss: 8.5.8
+      postcss: 8.5.10
       tailwindcss: 4.2.2
 
   '@tailwindcss/vite@4.2.2(vite@8.0.3(@types/node@25.3.5)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.44.0)(yaml@2.8.2))':
@@ -6115,7 +6115,7 @@ snapshots:
       '@vue/shared': 3.5.31
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.8
+      postcss: 8.5.10
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.31':
@@ -6455,13 +6455,13 @@ snapshots:
       - uploadthing
       - yaml
 
-  autoprefixer@10.4.27(postcss@8.5.8):
+  autoprefixer@10.4.27(postcss@8.5.10):
     dependencies:
       browserslist: 4.28.1
       caniuse-lite: 1.0.30001777
       fraction.js: 5.3.4
       picocolors: 1.1.1
-      postcss: 8.5.8
+      postcss: 8.5.10
       postcss-value-parser: 4.2.0
 
   axobject-query@4.1.0: {}
@@ -8064,11 +8064,11 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  postcss-loader@8.2.1(@rspack/core@1.7.10(@swc/helpers@0.5.17))(postcss@8.5.8)(typescript@6.0.2)(webpack@5.105.4(esbuild@0.27.4)):
+  postcss-loader@8.2.1(@rspack/core@1.7.10(@swc/helpers@0.5.17))(postcss@8.5.10)(typescript@6.0.2)(webpack@5.105.4(esbuild@0.27.4)):
     dependencies:
       cosmiconfig: 9.0.0(typescript@6.0.2)
       jiti: 2.6.1
-      postcss: 8.5.8
+      postcss: 8.5.10
       semver: 7.7.4
     optionalDependencies:
       '@rspack/core': 1.7.10(@swc/helpers@0.5.17)
@@ -8078,7 +8078,7 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.8:
+  postcss@8.5.10:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -9014,7 +9014,7 @@ snapshots:
       esbuild: 0.27.4
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-      postcss: 8.5.8
+      postcss: 8.5.10
       rollup: 4.60.0
       tinyglobby: 0.2.15
     optionalDependencies:
@@ -9029,7 +9029,7 @@ snapshots:
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
-      postcss: 8.5.8
+      postcss: 8.5.10
       rolldown: 1.0.0-rc.12
       tinyglobby: 0.2.15
     optionalDependencies:
