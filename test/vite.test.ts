@@ -107,6 +107,8 @@ describe("vite", () => {
                 this: "transformed",
               };
             }
+
+            return undefined;
           },
         }),
       ],

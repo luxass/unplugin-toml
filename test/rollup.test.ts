@@ -80,6 +80,8 @@ describe("rollup", () => {
                 this: "transformed",
               };
             }
+
+            return undefined;
           },
         }),
       ],

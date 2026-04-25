@@ -56,10 +56,12 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
         const fullPath = join(dirname(importer), relativePath!);
         return `${PREFIX}${fullPath}:raw`;
       }
+
+      return undefined;
     },
     async load(id) {
       if (!id.startsWith(PREFIX)) {
-        return;
+        return undefined;
       }
 
       id = id.slice(PREFIX.length);

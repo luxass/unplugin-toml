@@ -116,6 +116,8 @@ describe("webpack", () => {
                   this: "transformed",
                 };
               }
+
+              return undefined;
             },
           }),
         ],

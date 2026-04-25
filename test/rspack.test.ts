@@ -118,6 +118,8 @@ describe("rspack", () => {
                   this: "transformed",
                 };
               }
+
+              return undefined;
             },
           }),
         ],

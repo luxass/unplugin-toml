@@ -80,6 +80,8 @@ describe("esbuild", () => {
                 this: "transformed",
               };
             }
+
+            return undefined;
           },
         }),
       ],
