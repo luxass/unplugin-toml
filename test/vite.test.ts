@@ -1,8 +1,10 @@
 import { join } from "node:path";
+
 import { dedent } from "@luxass/utils";
 import { build } from "vite";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import TOMLPlugin from "../src/vite";
 
 describe("vite", () => {
@@ -97,15 +99,17 @@ describe("vite", () => {
         outDir: join(testdirPath, "dist"),
         minify: false,
       },
-      plugins: [TOMLPlugin({
-        transform(data) {
-          if (data != null && typeof data === "object" && "this" in data) {
-            return {
-              this: "transformed",
-            };
-          }
-        },
-      })],
+      plugins: [
+        TOMLPlugin({
+          transform(data) {
+            if (data != null && typeof data === "object" && "this" in data) {
+              return {
+                this: "transformed",
+              };
+            }
+          },
+        }),
+      ],
     });
 
     if (!Array.isArray(result)) {

@@ -5,9 +5,10 @@
  */
 
 import type { AstroIntegration } from "astro";
-import type { TomlOptions } from "./types";
+
 import { unplugin } from "./";
 import { PLUGIN_NAME } from "./constants";
+import type { TomlOptions } from "./types";
 
 /**
  * Astro integration

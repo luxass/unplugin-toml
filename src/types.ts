@@ -1,7 +1,5 @@
 import type { FilterPattern } from "@rollup/pluginutils";
-import type {
-  TomlPrimitive,
-} from "smol-toml";
+import type { TomlPrimitive } from "smol-toml";
 
 export interface TomlOptions {
   /**
@@ -15,5 +13,8 @@ export interface TomlOptions {
    * @param {string} filePath The path to the TOML file.
    * @returns {Record<string, TomlPrimitive> | undefined} The transformed data.
    */
-  transform?: (data: Record<string, TomlPrimitive>, filePath: string) => Record<string, TomlPrimitive> | undefined;
+  transform?: (
+    data: Record<string, TomlPrimitive>,
+    filePath: string,
+  ) => Record<string, TomlPrimitive> | undefined;
 }

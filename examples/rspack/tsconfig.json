@@ -8,9 +8,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": [
-      "unplugin-toml/types"
-    ],
+    "types": ["unplugin-toml/types"],
     "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,

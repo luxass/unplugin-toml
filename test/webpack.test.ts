@@ -1,9 +1,11 @@
-import type { Configuration } from "webpack";
 import { join } from "node:path";
+
 import { dedent } from "@luxass/utils";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+import type { Configuration } from "webpack";
 import { webpack as createWebpack } from "webpack";
+
 import TOMLPlugin from "../src/webpack";
 
 async function webpack(config: Configuration, testdirPath: string): Promise<null> {
@@ -52,12 +54,13 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    await webpack({
-      entry: join(testdirPath, "basic.js"),
-      plugins: [
-        TOMLPlugin(),
-      ],
-    }, testdirPath);
+    await webpack(
+      {
+        entry: join(testdirPath, "basic.js"),
+        plugins: [TOMLPlugin()],
+      },
+      testdirPath,
+    );
 
     const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
     expect(config).toBeDefined();
@@ -74,12 +77,13 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    await webpack({
-      entry: join(testdirPath, "basic-raw.js"),
-      plugins: [
-        TOMLPlugin(),
-      ],
-    }, testdirPath);
+    await webpack(
+      {
+        entry: join(testdirPath, "basic-raw.js"),
+        plugins: [TOMLPlugin()],
+      },
+      testdirPath,
+    );
 
     const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
     expect(config).toBeDefined();
@@ -101,20 +105,23 @@ describe("webpack", () => {
 
     expect(testdirPath).toBeDefined();
 
-    await webpack({
-      entry: join(testdirPath, "transform.js"),
-      plugins: [
-        TOMLPlugin({
-          transform(data) {
-            if (data != null && typeof data === "object" && "this" in data) {
-              return {
-                this: "transformed",
-              };
-            }
-          },
-        }),
-      ],
-    }, testdirPath);
+    await webpack(
+      {
+        entry: join(testdirPath, "transform.js"),
+        plugins: [
+          TOMLPlugin({
+            transform(data) {
+              if (data != null && typeof data === "object" && "this" in data) {
+                return {
+                  this: "transformed",
+                };
+              }
+            },
+          }),
+        ],
+      },
+      testdirPath,
+    );
 
     const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
     expect(config).toBeDefined();

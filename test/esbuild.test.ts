@@ -1,8 +1,10 @@
 import { join } from "node:path";
+
 import { dedent } from "@luxass/utils";
 import { build } from "esbuild";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import TOMLPlugin from "../src/esbuild";
 
 describe("esbuild", () => {
@@ -12,16 +14,12 @@ describe("esbuild", () => {
     expect(testdirPath).toBeDefined();
 
     await build({
-      entryPoints: [
-        join(testdirPath, "basic.js"),
-      ],
+      entryPoints: [join(testdirPath, "basic.js")],
       format: "esm",
       outfile: join(testdirPath, "output.js"),
       bundle: true,
       minifySyntax: false,
-      plugins: [
-        TOMLPlugin(),
-      ],
+      plugins: [TOMLPlugin()],
     });
 
     const config = await import(join(testdirPath, "output.js")).then((m) => m.config);
@@ -40,16 +38,12 @@ describe("esbuild", () => {
     expect(testdirPath).toBeDefined();
 
     await build({
-      entryPoints: [
-        join(testdirPath, "basic-raw.js"),
-      ],
+      entryPoints: [join(testdirPath, "basic-raw.js")],
       format: "esm",
       outfile: join(testdirPath, "output-raw.js"),
       bundle: true,
       minifySyntax: false,
-      plugins: [
-        TOMLPlugin(),
-      ],
+      plugins: [TOMLPlugin()],
     });
 
     const config = await import(join(testdirPath, "output-raw.js")).then((m) => m.config);
@@ -73,9 +67,7 @@ describe("esbuild", () => {
     expect(testdirPath).toBeDefined();
 
     await build({
-      entryPoints: [
-        join(testdirPath, "transform.js"),
-      ],
+      entryPoints: [join(testdirPath, "transform.js")],
       format: "esm",
       outfile: join(testdirPath, "output-transform.js"),
       bundle: true,

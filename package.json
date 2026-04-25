@@ -2,33 +2,40 @@
   "name": "unplugin-toml",
   "version": "2.1.0",
   "description": "Allow importing TOML files as JSON or Strings",
-  "type": "module",
+  "keywords": [
+    "astro",
+    "esbuild",
+    "nuxt",
+    "rolldown",
+    "rolldown-plugin",
+    "rollup",
+    "rollup-plugin",
+    "toml",
+    "unplugin",
+    "vite",
+    "vite-plugin",
+    "webpack"
+  ],
+  "bugs": "https://github.com/luxass/unplugin-toml/issues",
+  "license": "MIT",
   "author": {
     "name": "Lucas Nørgård",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@10.33.0",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luxass/unplugin-toml.git"
   },
-  "bugs": "https://github.com/luxass/unplugin-toml/issues",
-  "keywords": [
-    "toml",
-    "unplugin",
-    "vite",
-    "vite-plugin",
-    "webpack",
-    "rollup",
-    "rollup-plugin",
-    "rolldown",
-    "rolldown-plugin",
-    "esbuild",
-    "nuxt",
-    "astro"
+  "workspaces": [
+    "playground/*"
   ],
+  "files": [
+    "dist",
+    "toml.d.ts"
+  ],
+  "type": "module",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs",
     "./astro": "./dist/astro.mjs",
@@ -45,17 +52,6 @@
     "./webpack": "./dist/webpack.mjs",
     "./package.json": "./package.json"
   },
-  "types": "dist/index.d.mts",
-  "files": [
-    "dist",
-    "toml.d.ts"
-  ],
-  "engines": {
-    "node": ">=22"
-  },
-  "workspaces": [
-    "playground/*"
-  ],
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -72,6 +68,32 @@
     "play:astro": "pnpm run --filter @unplugin-toml/astro-example dev",
     "play:rspack": "pnpm run --filter @unplugin-toml/rspack-example dev",
     "typecheck": "tsc --noEmit && pnpm -r typecheck"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "catalog:runtime",
+    "smol-toml": "catalog:runtime",
+    "unplugin": "catalog:runtime"
+  },
+  "devDependencies": {
+    "@luxass/utils": "catalog:dev",
+    "@nuxt/kit": "catalog:dev",
+    "@nuxt/schema": "catalog:dev",
+    "@rspack/core": "catalog:dev",
+    "@types/node": "catalog:types",
+    "astro": "catalog:example",
+    "esbuild": "catalog:dev",
+    "oxfmt": "catalog:dev",
+    "oxlint": "catalog:dev",
+    "oxlint-tsgolint": "catalog:dev",
+    "publint": "catalog:dev",
+    "rolldown": "catalog:dev",
+    "rollup": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev",
+    "vitest": "catalog:dev",
+    "vitest-testdirs": "catalog:dev",
+    "webpack": "catalog:dev"
   },
   "peerDependencies": {
     "@nuxt/kit": "catalog:peer",
@@ -113,30 +135,8 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "@rollup/pluginutils": "catalog:runtime",
-    "smol-toml": "catalog:runtime",
-    "unplugin": "catalog:runtime"
+  "engines": {
+    "node": ">=22"
   },
-  "devDependencies": {
-    "@luxass/utils": "catalog:dev",
-    "@nuxt/kit": "catalog:dev",
-    "@nuxt/schema": "catalog:dev",
-    "@rspack/core": "catalog:dev",
-    "@types/node": "catalog:types",
-    "astro": "catalog:example",
-    "esbuild": "catalog:dev",
-    "oxfmt": "catalog:dev",
-    "oxlint": "catalog:dev",
-    "oxlint-tsgolint": "catalog:dev",
-    "publint": "catalog:dev",
-    "rolldown": "catalog:dev",
-    "rollup": "catalog:dev",
-    "tsdown": "catalog:dev",
-    "typescript": "catalog:dev",
-    "vite": "catalog:dev",
-    "vitest": "catalog:dev",
-    "vitest-testdirs": "catalog:dev",
-    "webpack": "catalog:dev"
-  }
+  "packageManager": "pnpm@10.33.0"
 }

@@ -4,9 +4,10 @@
  * @module
  */
 
-import type { NuxtModule } from "@nuxt/schema";
-import type { TomlOptions } from "./";
 import { addRspackPlugin, addVitePlugin, addWebpackPlugin, defineNuxtModule } from "@nuxt/kit";
+import type { NuxtModule } from "@nuxt/schema";
+
+import type { TomlOptions } from "./";
 import { NUXT_CONFIG_KEY, PLUGIN_NAME } from "./constants";
 import rspack from "./rspack";
 import vite from "./vite";

@@ -6,10 +6,5 @@ import inspect from "vite-plugin-inspect";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    toml(),
-    tailwindcss(),
-    inspect(),
-  ],
+  plugins: [react(), toml(), tailwindcss(), inspect()],
 });

@@ -25,7 +25,9 @@ import TOMLPlugin from "unplugin-toml/vite";
 
 export default defineConfig({
   plugins: [
-    TOMLPlugin({ /* options */ }),
+    TOMLPlugin({
+      /* options */
+    }),
   ],
 });
 ```
@@ -41,7 +43,9 @@ import TOMLPlugin from "unplugin-toml/rollup";
 
 export default {
   plugins: [
-    TOMLPlugin({ /* options */ }),
+    TOMLPlugin({
+      /* options */
+    }),
   ],
 };
 ```
@@ -56,7 +60,9 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require("unplugin-toml/webpack").default({ /* options */ }),
+    require("unplugin-toml/webpack").default({
+      /* options */
+    }),
   ],
 };
 ```
@@ -70,7 +76,12 @@ module.exports = {
 // nuxt.config.js
 export default defineNuxtConfig({
   modules: [
-    ["unplugin-toml/nuxt", { /* options */ }]
+    [
+      "unplugin-toml/nuxt",
+      {
+        /* options */
+      },
+    ],
   ],
 });
 ```
@@ -90,8 +101,8 @@ export default defineConfig({
   integrations: [
     TOMLPlugin({
       /* options */
-    })
-  ]
+    }),
+  ],
 });
 ```
 
@@ -129,9 +140,9 @@ import TOMLPlugin from "unplugin-toml/rspack";
 export default {
   plugins: [
     new rspack.HtmlRspackPlugin({
-      template: "./index.html"
+      template: "./index.html",
     }),
-    TOMLPlugin()
+    TOMLPlugin(),
   ],
 };
 ```
@@ -167,9 +178,10 @@ TOMLPlugin({
   ],
   parserOptions: {
     // see toml load options
-  }
+  },
 });
 ```
+
 ### TypeScript
 
 If you are using TypeScript, you need to add the following to your `tsconfig.json` file:
@@ -177,9 +189,7 @@ If you are using TypeScript, you need to add the following to your `tsconfig.jso
 ```json
 {
   "compilerOptions": {
-    "types": [
-      "unplugin-toml/types"
-    ]
+    "types": ["unplugin-toml/types"]
   }
 }
 ```

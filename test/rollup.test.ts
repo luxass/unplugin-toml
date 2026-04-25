@@ -1,8 +1,10 @@
 import { join } from "node:path";
+
 import { dedent } from "@luxass/utils";
 import { rollup } from "rollup";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import TOMLPlugin from "../src/rollup";
 
 describe("rollup", () => {
@@ -13,9 +15,7 @@ describe("rollup", () => {
 
     const bundle = await rollup({
       input: join(testdirPath, "basic.js"),
-      plugins: [
-        TOMLPlugin(),
-      ],
+      plugins: [TOMLPlugin()],
     });
 
     await bundle.write({
@@ -41,9 +41,7 @@ describe("rollup", () => {
 
     const bundle = await rollup({
       input: join(testdirPath, "basic-raw.js"),
-      plugins: [
-        TOMLPlugin(),
-      ],
+      plugins: [TOMLPlugin()],
     });
 
     await bundle.write({

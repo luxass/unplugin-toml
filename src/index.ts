@@ -3,14 +3,16 @@
  * @module
  */
 
-import type { UnpluginFactory, UnpluginInstance } from "unplugin";
-import type { TomlOptions } from "./types";
 import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
+
 import { createFilter } from "@rollup/pluginutils";
 import { parse } from "smol-toml";
+import type { UnpluginFactory, UnpluginInstance } from "unplugin";
 import { createUnplugin } from "unplugin";
+
 import { PLUGIN_NAME } from "./constants";
+import type { TomlOptions } from "./types";
 
 export type { TomlOptions };
 
@@ -23,9 +25,7 @@ const CRLF_RE = /\r\n/g;
  * A unplugin factory, used by Unplugin to create a new plugin instance.
  */
 export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (options = {}) => {
-  const filter = createFilter(
-    options.include || DEFAULT_INCLUDE_RE,
-  );
+  const filter = createFilter(options.include || DEFAULT_INCLUDE_RE);
 
   return {
     name: PLUGIN_NAME,
@@ -87,6 +87,7 @@ export const unpluginFactory: UnpluginFactory<TomlOptions | undefined> = (option
 /**
  * The main unplugin instance.
  */
-export const unplugin: UnpluginInstance<TomlOptions | undefined, boolean> = /* #__PURE__ */ createUnplugin(unpluginFactory);
+export const unplugin: UnpluginInstance<TomlOptions | undefined, boolean> =
+  /* #__PURE__ */ createUnplugin(unpluginFactory);
 
 export default unplugin;

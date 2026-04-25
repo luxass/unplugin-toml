@@ -8,12 +8,5 @@ import vueDevtools from "vite-plugin-vue-devtools";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vueRouter(),
-    vue(),
-    vueDevtools(),
-    toml(),
-    inspect(),
-    tailwindcss(),
-  ],
+  plugins: [vueRouter(), vue(), vueDevtools(), toml(), inspect(), tailwindcss()],
 });

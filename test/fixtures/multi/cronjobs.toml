@@ -18,11 +18,7 @@ restartPolicy = "OnFailure"
 [[cronjobs.spec.jobTemplate.spec.template.spec.containers]]
 name = "first-job"
 image = "busybox:latest"
-command = [
-  "/bin/sh",
-  "-c",
-  "echo \"First job running\"; date"
-]
+command = ["/bin/sh", "-c", "echo \"First job running\"; date"]
 
 [[cronjobs]]
 apiVersion = "batch/v1"
@@ -44,8 +40,4 @@ restartPolicy = "OnFailure"
 [[cronjobs.spec.jobTemplate.spec.template.spec.containers]]
 name = "second-job"
 image = "busybox:latest"
-command = [
-  "/bin/sh",
-  "-c",
-  "echo \"Second job running\"; date"
-]
+command = ["/bin/sh", "-c", "echo \"Second job running\"; date"]
