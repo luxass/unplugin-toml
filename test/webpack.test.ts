@@ -26,6 +26,10 @@ async function webpack(config: Configuration, testdirPath: string): Promise<null
         filename: "bundle.js",
       },
       mode: "production",
+      stats: "none",
+      infrastructureLogging: {
+        level: "none",
+      },
       ...config,
     });
 

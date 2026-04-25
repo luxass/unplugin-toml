@@ -23,6 +23,10 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
         },
       },
       mode: "production",
+      stats: "none",
+      infrastructureLogging: {
+        level: "none",
+      },
       ...config,
       experiments: {
         outputModule: true,

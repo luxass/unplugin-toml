@@ -14,6 +14,7 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      logLevel: "silent",
       build: {
         lib: {
           entry: join(testdirPath, "basic.js"),
@@ -49,6 +50,7 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      logLevel: "silent",
       build: {
         lib: {
           entry: join(testdirPath, "basic-raw.js"),
@@ -89,6 +91,7 @@ describe("vite", () => {
     expect(testdirPath).toBeDefined();
 
     const result = await build({
+      logLevel: "silent",
       build: {
         lib: {
           entry: join(testdirPath, "transform.js"),
