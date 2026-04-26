@@ -70,8 +70,5 @@ jobs:
       - name: test
         run: pnpm test
 
-      - name: generate nuxt types
-        run: pnpm run --filter @unplugin-toml/nuxt-example generate:types
-
       - name: typecheck
         run: pnpm typecheck
