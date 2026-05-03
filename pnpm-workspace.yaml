@@ -17,11 +17,11 @@ catalogs:
     esbuild: 0.28.0
     oxfmt: 0.46.0
     oxlint: 1.61.0
-    oxlint-tsgolint: 0.21.1
+    oxlint-tsgolint: 0.22.0
     publint: 0.3.18
-    rolldown: 1.0.0-rc.16
+    rolldown: 1.0.0-rc.17
     rollup: 4.60.2
-    tsdown: 0.21.9
+    tsdown: 0.21.10
     typescript: 6.0.3
     vite: 8.0.9
     vitest: 4.1.5
@@ -50,7 +50,7 @@ catalogs:
     "@tailwindcss/vite": 4.2.4
     "@vitejs/plugin-react": 6.0.1
     "@vitejs/plugin-vue": 6.0.6
-    astro: 6.1.8
+    astro: 6.1.9
     autoprefixer: 10.5.0
     postcss: 8.5.10
     postcss-loader: 8.2.1
@@ -64,8 +64,8 @@ catalogs:
     unplugin-vue-router: 0.19.2
     vite-plugin-inspect: 11.3.3
     vite-plugin-vue-devtools: 8.1.1
-    vue: 3.5.32
-    vue-router: 5.0.4
+    vue: 3.5.33
+    vue-router: 5.0.6
     vue-tsc: 3.2.7
 
   runtime:
@@ -79,4 +79,4 @@ onlyBuiltDependencies:
 overrides:
   chokidar: 5.0.0
   semver: 7.7.4
-  undici-types: 6.24.0
+  undici-types: 6.25.0
