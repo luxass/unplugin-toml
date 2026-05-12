@@ -79,4 +79,4 @@ onlyBuiltDependencies:
 overrides:
   chokidar: 5.0.0
   semver: 7.7.4
-  undici-types: 6.25.0
+  undici-types: 8.2.0
