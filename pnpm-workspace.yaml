@@ -11,14 +11,14 @@ packages:
 catalogs:
   dev:
     "@luxass/utils": 2.7.3
-    "@nuxt/kit": 4.4.4
-    "@nuxt/schema": 4.4.4
-    "@rspack/core": 2.0.2
+    "@nuxt/kit": 4.4.5
+    "@nuxt/schema": 4.4.5
+    "@rspack/core": 2.0.3
     esbuild: 0.28.0
-    oxfmt: 0.48.0
+    oxfmt: 0.49.0
     oxlint: 1.63.0
     oxlint-tsgolint: 0.22.1
-    publint: 0.3.19
+    publint: 0.3.21
     rolldown: 1.0.0
     rollup: 4.60.3
     tsdown: 0.22.0
@@ -29,7 +29,7 @@ catalogs:
     webpack: 5.106.2
 
   types:
-    "@types/node": 25.6.0
+    "@types/node": 25.7.0
     "@types/react": 19.2.14
     "@types/react-dom": 19.2.3
 
@@ -45,12 +45,12 @@ catalogs:
     webpack: ^4 || ^5
 
   example:
-    "@rspack/cli": 2.0.2
-    "@tailwindcss/postcss": 4.2.4
-    "@tailwindcss/vite": 4.2.4
+    "@rspack/cli": 2.0.3
+    "@tailwindcss/postcss": 4.3.0
+    "@tailwindcss/vite": 4.3.0
     "@vitejs/plugin-react": 6.0.1
     "@vitejs/plugin-vue": 6.0.6
-    astro: 6.3.0
+    astro: 6.3.1
     autoprefixer: 10.5.0
     postcss: 8.5.14
     postcss-loader: 8.2.1
@@ -59,7 +59,7 @@ catalogs:
     react-router-dom: 7.15.0
     rspack-vue-loader: 17.5.0
     shiki: 4.0.2
-    tailwindcss: 4.2.4
+    tailwindcss: 4.3.0
     ts-node: 10.9.2
     unplugin-vue-router: 0.19.2
     vite-plugin-inspect: 11.3.3
@@ -78,5 +78,5 @@ onlyBuiltDependencies:
 
 overrides:
   chokidar: 5.0.0
-  semver: 7.7.4
+  semver: 7.8.0
   undici-types: 6.25.0
