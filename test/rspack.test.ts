@@ -1,3 +1,4 @@
+import { createRequire } from "node:module";
 import { join } from "node:path";
 
 import { dedent } from "@luxass/utils";
@@ -7,6 +8,10 @@ import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 
 import TOMLPlugin from "../src/rspack";
+
+const require = createRequire(import.meta.url);
+const { version: rspackVersion } = require("@rspack/core/package.json") as { version: string };
+const rspackMajor = Number(rspackVersion.split(".")[0]);
 
 async function rspack(config: Configuration, testdirPath: string): Promise<null> {
   return new Promise((resolve, reject) => {
@@ -22,10 +27,13 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
           type: "module",
         },
         module: true,
-        bundlerInfo: {
-          force: false,
-        },
+        // bundlerInfo was promoted from experiments to output in v2.x.
+        ...(rspackMajor >= 2 ? { bundlerInfo: { force: false } } : {}),
       },
+      // In v1.x, bundlerInfo lived under experiments.rspackFuture.
+      ...(rspackMajor < 2
+        ? ({ experiments: { rspackFuture: { bundlerInfo: { force: false } } } } as object)
+        : {}),
       mode: "production",
       stats: "none",
       infrastructureLogging: {
@@ -37,10 +45,16 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
     compiler.run((err, stats) => {
       if (err) {
         reject(err);
+        return;
       }
 
       if (!stats) {
         reject(new Error("rspack stats not available"));
+        return;
+      }
+
+      if (stats.hasErrors()) {
+        reject(new Error(stats.toString("errors-only")));
         return;
       }
 
@@ -63,10 +77,10 @@ describe("rspack", () => {
       testdirPath,
     );
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       pluginDir: "./plugins",
       web: { enabled: true },
       logging: { type: "stdout", level: "info" },
@@ -86,10 +100,10 @@ describe("rspack", () => {
       testdirPath,
     );
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toMatch(dedent`
+    expect(module.config).toMatch(dedent`
       pluginDir = "./plugins"
 
       [web]
@@ -126,10 +140,10 @@ describe("rspack", () => {
       testdirPath,
     );
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       this: "transformed",
     });
   });

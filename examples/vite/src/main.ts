@@ -63,7 +63,7 @@ if (root == null) {
 root.innerHTML = `
   <div class="page-shell">
     <header class="hero">
-      <p class="eyebrow">Rspack example</p>
+      <p class="eyebrow">Vite example</p>
       <h1>TOML imports, no framework required.</h1>
       <p>
         This page is mounted by plain TypeScript. It imports <code>config.toml</code>
