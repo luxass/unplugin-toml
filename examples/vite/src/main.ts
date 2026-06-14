@@ -17,10 +17,13 @@ const escapeHtml = (value: string) =>
 
 const stringifyValue = (value: unknown) => {
   if (typeof value === "string") return value;
+  if (typeof value === "number" || typeof value === "boolean" || typeof value === "bigint") {
+    return value.toString();
+  }
   if (value == null) return "null";
   if (typeof value === "object") return JSON.stringify(value, null, 2);
 
-  return String(value);
+  return "Unsupported value";
 };
 
 const renderSummaryItem = ({ label, value }: SummaryItem) => `
