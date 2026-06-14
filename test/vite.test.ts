@@ -39,10 +39,10 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       pluginDir: "./plugins",
       web: { enabled: true },
       logging: { type: "stdout", level: "info" },
@@ -80,10 +80,10 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toMatch(dedent`
+    expect(module.config).toMatch(dedent`
       pluginDir = "./plugins"
 
       [web]
@@ -138,10 +138,10 @@ describe("vite", () => {
 
     expect(result).toBeDefined();
 
-    const config = await import(join(testdirPath, "dist/bundle.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       this: "transformed",
     });
   });

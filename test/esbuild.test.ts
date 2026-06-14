@@ -22,10 +22,10 @@ describe("esbuild", () => {
       plugins: [TOMLPlugin()],
     });
 
-    const config = await import(join(testdirPath, "output.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "output.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       pluginDir: "./plugins",
       web: { enabled: true },
       logging: { type: "stdout", level: "info" },
@@ -46,10 +46,10 @@ describe("esbuild", () => {
       plugins: [TOMLPlugin()],
     });
 
-    const config = await import(join(testdirPath, "output-raw.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "output-raw.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toMatch(dedent`
+    expect(module.config).toMatch(dedent`
       pluginDir = "./plugins"
 
       [web]
@@ -87,10 +87,10 @@ describe("esbuild", () => {
       ],
     });
 
-    const config = await import(join(testdirPath, "output-transform.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "output-transform.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       this: "transformed",
     });
   });

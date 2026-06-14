@@ -24,10 +24,10 @@ describe("rolldown", () => {
       sourcemap: false,
     });
 
-    const config = await import(join(testdirPath, "dist/basic.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/basic.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       pluginDir: "./plugins",
       web: { enabled: true },
       logging: { type: "stdout", level: "info" },
@@ -50,10 +50,10 @@ describe("rolldown", () => {
       sourcemap: false,
     });
 
-    const config = await import(join(testdirPath, "dist/basic-raw.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/basic-raw.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toMatch(dedent`
+    expect(module.config).toMatch(dedent`
       pluginDir = "./plugins"
 
       [web]
@@ -93,10 +93,10 @@ describe("rolldown", () => {
       sourcemap: false,
     });
 
-    const config = await import(join(testdirPath, "dist/transform.js")).then((m) => m.config);
-    expect(config).toBeDefined();
+    const module = await import(join(testdirPath, "dist/transform.js"));
+    expect(Object.keys(module)).toEqual(["config"]);
 
-    expect(config).toEqual({
+    expect(module.config).toEqual({
       this: "transformed",
     });
   });
