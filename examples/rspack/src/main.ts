@@ -30,7 +30,11 @@ const renderSummaryItem = ({ label, value }: SummaryItem) => `
   </div>
 `;
 
-const toId = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const toId = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 const renderCodeBlock = (label: string, code: string, language: string) => {
   const headingId = `${toId(label)}-heading`;
