@@ -11,6 +11,8 @@ minimumReleaseAgeExclude:
   - "@luxass/utils@2.7.5"
   # Renovate security update: pnpm@11.8.0
   - pnpm@11.8.0
+  # Renovate security update: astro@6.4.6
+  - astro@6.4.6
 
 catalogs:
   dev:
@@ -36,7 +38,7 @@ catalogs:
   example:
     "@rspack/cli": 2.0.6
     "@rspack/dev-server": 2.0.3
-    astro: 6.4.4
+    astro: 6.4.6
 
   runtime:
     "@rollup/pluginutils": 5.4.0
