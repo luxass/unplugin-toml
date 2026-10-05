@@ -11,6 +11,8 @@ minimumReleaseAgeExclude:
   - "@luxass/utils@2.7.5"
   # Renovate security update: pnpm@11.8.0
   - pnpm@11.8.0
+  # Renovate security update: smol-toml@1.7.1
+  - smol-toml@1.7.1
 
 catalogs:
   dev:
@@ -40,7 +42,7 @@ catalogs:
 
   runtime:
     "@rollup/pluginutils": 5.4.0
-    smol-toml: 1.6.1
+    smol-toml: 1.7.1
     unplugin: 3.0.0
 
 onlyBuiltDependencies:
