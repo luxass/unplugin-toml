@@ -9,8 +9,8 @@ packages:
 
 minimumReleaseAgeExclude:
   - "@luxass/utils@2.7.5"
-  # Renovate security update: pnpm@11.8.0
-  - pnpm@11.8.0
+  # Renovate security update: pnpm@11.8.0 || 11.11.0
+  - pnpm@11.8.0 || 11.11.0
   # Renovate security update: smol-toml@1.7.1
   - smol-toml@1.7.1
   # Renovate security update: vitest@4.1.11
