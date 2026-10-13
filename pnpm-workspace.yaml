@@ -15,6 +15,8 @@ minimumReleaseAgeExclude:
   - smol-toml@1.7.1
   # Renovate security update: vitest@4.1.11
   - vitest@4.1.11
+  # Renovate security update: astro@7.2.8
+  - astro@7.2.8
 
 catalogs:
   dev:
@@ -40,7 +42,7 @@ catalogs:
   example:
     "@rspack/cli": 2.0.6
     "@rspack/dev-server": 2.0.3
-    astro: 6.4.4
+    astro: 7.2.8
 
   runtime:
     "@rollup/pluginutils": 5.4.0
