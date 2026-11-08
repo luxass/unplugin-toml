@@ -39,7 +39,7 @@ catalogs:
 
   example:
     "@rspack/cli": 2.3.1
-    "@rspack/dev-server": 2.0.3
+    "@rspack/dev-server": 2.2.2
     astro: 7.4.5
 
   runtime:
