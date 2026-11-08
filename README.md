@@ -24,11 +24,7 @@ npm i -D unplugin-toml
 import TOMLPlugin from "unplugin-toml/vite";
 
 export default defineConfig({
-  plugins: [
-    TOMLPlugin({
-      /* options */
-    }),
-  ],
+  plugins: [TOMLPlugin({/* options */})],
 });
 ```
 
@@ -42,11 +38,7 @@ export default defineConfig({
 import TOMLPlugin from "unplugin-toml/rollup";
 
 export default {
-  plugins: [
-    TOMLPlugin({
-      /* options */
-    }),
-  ],
+  plugins: [TOMLPlugin({/* options */})],
 };
 ```
 
@@ -59,11 +51,7 @@ export default {
 // webpack.config.js
 module.exports = {
   /* ... */
-  plugins: [
-    require("unplugin-toml/webpack").default({
-      /* options */
-    }),
-  ],
+  plugins: [require("unplugin-toml/webpack").default({/* options */})],
 };
 ```
 
@@ -75,14 +63,7 @@ module.exports = {
 ```ts
 // nuxt.config.js
 export default defineNuxtConfig({
-  modules: [
-    [
-      "unplugin-toml/nuxt",
-      {
-        /* options */
-      },
-    ],
-  ],
+  modules: [["unplugin-toml/nuxt", {/* options */}]],
 });
 ```
 
@@ -98,11 +79,7 @@ import TOMLPlugin from "unplugin-toml/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    TOMLPlugin({
-      /* options */
-    }),
-  ],
+  integrations: [TOMLPlugin({/* options */})],
 });
 ```
 
@@ -118,11 +95,7 @@ import TOMLPlugin from "unplugin-toml/esbuild";
 
 build({
   /* ... */
-  plugins: [
-    TOMLPlugin({
-      /* options */
-    }),
-  ],
+  plugins: [TOMLPlugin({/* options */})],
 });
 ```
 
@@ -159,11 +132,7 @@ import TOMLPlugin from "unplugin-toml/rolldown";
 
 export default defineConfig({
   input: "./index.js",
-  plugins: [
-    TOMLPlugin({
-      /* options */
-    }),
-  ],
+  plugins: [TOMLPlugin({/* options */})],
 });
 ```
 
