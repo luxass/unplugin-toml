@@ -45,7 +45,7 @@ catalogs:
   runtime:
     "@rollup/pluginutils": 5.4.0
     smol-toml: 1.9.1
-    unplugin: 3.0.0
+    unplugin: 3.7.0
 
 onlyBuiltDependencies:
   - esbuild
