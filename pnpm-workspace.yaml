@@ -40,7 +40,7 @@ catalogs:
   example:
     "@rspack/cli": 2.0.6
     "@rspack/dev-server": 2.0.3
-    astro: 6.4.4
+    astro: 7.4.5
 
   runtime:
     "@rollup/pluginutils": 5.4.0
