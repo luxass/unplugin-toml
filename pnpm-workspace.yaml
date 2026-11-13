@@ -15,12 +15,14 @@ minimumReleaseAgeExclude:
   - smol-toml@1.7.1
   # Renovate security update: vitest@4.1.11
   - vitest@4.1.11
+  # Renovate security update: @nuxt/schema@4.6.4
+  - "@nuxt/schema@4.6.4"
 
 catalogs:
   dev:
     "@luxass/utils": 2.7.5
     "@nuxt/kit": 4.4.8
-    "@nuxt/schema": 4.4.8
+    "@nuxt/schema": 4.6.4
     "@rspack/core": 2.0.6
     "@types/node": 25.9.2
     esbuild: 0.28.0
